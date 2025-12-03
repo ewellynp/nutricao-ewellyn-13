@@ -9,6 +9,12 @@ var paciente = obtemPacienteDoFormulario(form);
 
     // criando a linha e as celulas d tabela do no paciente
     var pacienteTr = montaTr(paciente);
+
+    // alocando a linha na tabela
+    var tabela = document.querySelector('#tabela-pacientes');
+
+    tabela.appendChild(pacienteTr);
+    
 };
 function obtemPacienteDoFormulario(form) {
     var paciente = {
@@ -23,4 +29,25 @@ function obtemPacienteDoFormulario(form) {
 
 function montaTr(){
     
+
+}
+function montaTd(paciente){
+    var td = document.createElement('tr');
+    pacienteTr.classList.add('paciente');
+
+    pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
+    pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
+    pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
+    pacienteTr.appendChild(montaTd(paciente.gordura, "gordura"));
+    pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
+
+    return pacienteTr;
+}
+
+function montaTd(dado, classe){
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.classList.add(classe);
+
+    return td;
 }
